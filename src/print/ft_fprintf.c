@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printfd.c                                       :+:      :+:    :+:   */
+/*   ft_fprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:32:01 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/13 17:48:50 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:58:42 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfd.h"
+#include "ft_fprintf.h"
 
 int	ft_checkd(char c, va_list params, int fd)
 {
@@ -36,7 +36,7 @@ int	ft_checkd(char c, va_list params, int fd)
 	return (count);
 }
 
-int	ft_printfd(int fd, const char *format, ...)
+int	ft_fprintf(int fd, const char *format, ...)
 {
 	int		count;
 	va_list	params;

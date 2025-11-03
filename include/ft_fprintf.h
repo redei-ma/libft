@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freemat.c                                       :+:      :+:    :+:   */
+/*   ft_fprintf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 17:25:24 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/05/05 14:06:39 by redei-ma         ###   ########.fr       */
+/*   Created: 2024/12/09 19:07:01 by redei-ma          #+#    #+#             */
+/*   Updated: 2025/06/25 12:57:55 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_FPRINTF_H
+# define FT_FPRINTF_H
 
-void	**ft_freemat(void **mat, int size)
-{
-	int	i;
+# include "libft.h"
 
-	if (!mat)
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		if (mat[i])
-		{
-			free(mat[i]);
-			mat[i] = NULL;
-		}
-		i++;
-	}
-	free(mat);
-	return (NULL);
-}
+int		ft_checkd(char c, va_list params, int fd);
+
+int		ft_putchard(char c, int fd);
+size_t	ft_putstrd(char *s, int fd);
+int		ft_putnbrd(long long n, int fd);
+int		ft_puthexd(long long n, char c, int fd);
+int		ft_putptrd(unsigned long long n, int fd);
+
+#endif

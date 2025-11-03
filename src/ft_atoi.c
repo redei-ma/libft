@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 10:56:08 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/10 20:33:48 by redei-ma         ###   ########.fr       */
+/*   Created: 2025/02/12 16:40:41 by redei-ma          #+#    #+#             */
+/*   Updated: 2025/02/13 20:33:40 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	n;
-	int	sign;
+	int		i;
+	int		sign;
+	long	n;
 
 	i = 0;
 	n = 0;
 	sign = 1;
-	while (((str[i] >= 9 && str[i] <= 13) || str[i] == 32) && str[i] != '\0')
-		i++;
 	if (str[i] == '-')
 	{
 		sign = -sign;
@@ -35,15 +33,8 @@ int	ft_atoi(char *str)
 		n = n * 10 + (str[i] - '0');
 		i++;
 	}
-	return (sign * n);
+	n = sign * n;
+	if (n < INT_MIN || n > INT_MAX || str[i] != '\0')
+		n = 0;
+	return (n);
 }
-
-/* int	main(void)
-{
-	char str[] = "	  -+11";
-	int a = ft_atoi(str);
-	printf("funzione ricreata: %d\n", a);
-	int b = atoi(str);
-	printf("Funzione originale: %d", b);
-	return 0;
-} */
