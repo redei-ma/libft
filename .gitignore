@@ -1,0 +1,26 @@
+# build artifacts
+*.a
+*.o
+*.d
+*.gch
+*.dSYM/
+.obj/
+a.out
+run_tests
+
+# debugging leftovers
+core
+vgcore.*
+*.supp
+
+# tooling and editors
+.clangd
+.vscode/
+.idea/
+*.swp
+*~
+.claude/
+
+# macOS
+.DS_Store
+._*

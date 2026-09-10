@@ -1,9 +1,9 @@
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -I$(INCLUDE)
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE)
 
 SRC = \
-	$(addprefix src/, ft_abs.c ft_atoi.c ft_bzero.c ft_free_char_mat.c ft_free_mat.c ft_matlen.c ft_tolower.c ft_toupper.c get_next_line_bonus.c safe_close.c) \
+	$(addprefix src/, ft_abs.c ft_atoi.c ft_natoi.c ft_bzero.c ft_free_char_mat.c ft_free_mat.c ft_matlen.c ft_tolower.c ft_toupper.c get_next_line_bonus.c safe_close.c) \
 	$(addprefix src/alloc/, ft_calloc.c ft_itoa.c ft_nsplit.c ft_realloc.c ft_split.c ft_strdup.c ft_strjoin.c ft_strtrim.c ft_substr.c) \
 	$(addprefix src/lst/, ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c) \
 	$(addprefix src/mem/, ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c) \
@@ -14,15 +14,22 @@ SRC = \
 
 INCLUDE = include
 
+HDRS = $(addprefix $(INCLUDE)/, libft.h ft_printf.h ft_fprintf.h get_next_line_bonus.h)
+
 OBJ_DIR = ./.obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+
+TEST_DIR = test
+TEST_SRC = $(addprefix $(TEST_DIR)/, main.c report.c test_type.c test_str.c \
+			test_mem.c test_alloc.c test_lst.c test_print.c test_misc.c test_null.c)
+TEST_BIN = run_tests
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c $(HDRS)
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -30,9 +37,16 @@ clean:
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(TEST_BIN)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+debug: fclean
+	@$(MAKE) CFLAGS="$(CFLAGS) -g" all
+
+test: $(NAME)
+	@$(CC) $(CFLAGS) -I$(TEST_DIR) $(TEST_SRC) $(NAME) -o $(TEST_BIN)
+	@./$(TEST_BIN)
+
+.PHONY: all clean fclean re debug test
 .SILENT:

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 11:52:12 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/06/25 13:04:32 by redei-ma         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -32,6 +20,7 @@ typedef struct s_list
 /* Root functions */
 int		ft_abs(int x);
 int		ft_atoi(char *str);
+int		ft_natoi(char *str);
 void	ft_bzero(void *s, size_t n);
 char	**ft_free_char_mat(char **mat);
 void	**ft_free_mat(void **mat, int size);
