@@ -85,6 +85,10 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	// the array is indexed by fd, and nothing stops the system from handing
+	// out a descriptor past its end: the bound comes from the array itself
+	if ((size_t)fd >= sizeof(leftovers) / sizeof(*leftovers))
+		return (NULL);
 	if (!leftovers[fd])
 		leftovers[fd] = (ft_strdup(""));
 	if (!leftovers[fd])
