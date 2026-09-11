@@ -50,9 +50,7 @@ has an equivalent the result is compared against it, `ft_memcpy` against
 .
 ├── include/     libft.h, plus one header each for printf and fprintf
 ├── src/         one directory per group, one file per function
-├── test/        one file per group, plus the comparators
-├── Makefile
-└── LICENSE
+└── test/        one file per group, plus the comparators
 ```
 
 ## Notes
